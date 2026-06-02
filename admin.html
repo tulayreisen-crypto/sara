@@ -6,55 +6,128 @@
   <title>لوحة التحكم - سارة الناصر</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* Admin specific styles */
     .admin {padding:20px}
-    .login {max-width:360px;margin:40px auto;background:#fff;padding:16px;border-radius:10px}
-    .book-list {margin-top:16px}
-    table{width:100%;border-collapse:collapse}
-    th,td{border:1px solid #eee;padding:8px;text-align:right}
+    .login {max-width:420px;margin:30px auto;background:#fff;padding:18px;border-radius:12px}
+    .panel {display:flex;gap:18px;align-items:flex-start}
+    .col {flex:1;min-width:280px}
+    .card {background:#fff;padding:12px;border-radius:10px;margin-bottom:12px;box-shadow:0 6px 18px rgba(16,24,40,0.04)}
+    label.input{display:block;margin-bottom:8px}
+    input[type="text"], input[type="number"], input[type="email"], textarea, select{width:100%;padding:10px;border-radius:8px;border:1px solid #eee}
+    button.btn {padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+    .muted{color:var(--muted);font-size:13px}
+    .thumb{width:84px;height:64px;object-fit:cover;border-radius:8px;border:1px solid #eee}
+    .list-item{display:flex;gap:12px;align-items:center;margin-bottom:8px}
     .small{font-size:13px;color:var(--muted)}
+    .colors {display:flex;gap:8px;align-items:center}
+    .colors input[type=color]{width:48px;height:36px;padding:0;border-radius:6px;border:1px solid #ddd}
   </style>
 </head>
 <body>
   <main class="container admin">
-    <div id="loginBox" class="login">
+    <div id="loginBox" class="login card">
       <h3>تسجيل الدخول إلى لوحة التحكم</h3>
-      <label>اسم المستخدم<input id="user" value="admin"></label>
-      <label>كلمة المرور<input id="pass" type="password"></label>
-      <button id="loginBtn" class="btn primary">دخول</button>
-      <p style="font-size:12px;margin-top:8px">كلمة المرور الافتراضية: 1234</p>
+      <label class="input">اسم المستخدم<input id="user" value="admin"></label>
+      <label class="input">كلمة المرور<input id="pass" type="password"></label>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button id="loginBtn" class="btn primary">دخول</button>
+        <button id="demoLoad" class="btn secondary">تحميل بيانات تجريبية</button>
+      </div>
+      <p class="small" style="margin-top:8px">كلمة المرور الافتراضية: 1234</p>
     </div>
 
     <div id="dashboard" style="display:none">
       <h2>لوحة التحكم</h2>
-      <section>
-        <h4>الإعدادات</h4>
-        <label>رقم واتساب<input id="waNumber" placeholder="9665..."></label>
-        <button id="saveSettings" class="btn">حفظ</button>
-      </section>
+      <div class="panel">
+        <div class="col">
+          <div class="card">
+            <h4>إحصاءات</h4>
+            <div id="stats" class="small"></div>
+          </div>
 
-      <section>
-        <h4>حجوزات واردة</h4>
-        <div class="book-list" id="bookings"></div>
-      </section>
+          <div class="card">
+            <h4>الإعدادات العامة</h4>
+            <label class="input">رقم واتساب<input id="waNumber" placeholder="9665..."></label>
+            <label class="input">خط الموقع
+              <select id="fontSelect">
+                <option value="">افتراضي</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Tajawal">Tajawal</option>
+                <option value="Noto+Naskh+Arabic">Noto Naskh Arabic</option>
+                <option value="Noto+Sans+Arabic">Noto Sans Arabic</option>
+              </select>
+            </label>
+            <div style="margin-top:8px" class="colors">
+              <label class="small">اللون الأساسي <input id="colorPrimary" type="color" value="#7C3AED"></label>
+              <label class="small">اللون الذهبي <input id="colorGold" type="color" value="#D4A574"></label>
+            </div>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button id="saveSettings" class="btn primary">حفظ الإعدادات</button>
+              <button id="resetBrand" class="btn secondary">إعادة للألوان الافتراضية</button>
+            </div>
+          </div>
 
-      <section>
-        <h4>الخدمات</h4>
-        <div id="servicesList"></div>
-        <button id="addService" class="btn">إضافة خدمة</button>
-      </section>
+          <div class="card">
+            <h4>المحتوى الرئيسي للصفحة</h4>
+            <label class="input">عنوان الهيرو<input id="heroTitle" type="text"></label>
+            <label class="input">النص التعريفي<textarea id="heroLead" rows="3"></textarea></label>
+            <label class="input">نص زر الحجز<input id="heroCta" type="text"></label>
+            <button id="saveHero" class="btn primary">حفظ</button>
+          </div>
 
-      <section>
-        <h4>المقالات</h4>
-        <div id="articlesList"></div>
-        <div style="margin-top:8px">
-          <button id="addArticle" class="btn">إضافة مقال جديد</button>
+          <div class="card">
+            <h4>قائمة الاختصارات</h4>
+            <div id="bookings" class="small">جاري التحميل...</div>
+          </div>
         </div>
-      </section>
 
-      <button id="logout" class="btn">خروج</button>
+        <div class="col">
+          <div class="card">
+            <h4>معرض الصور</h4>
+            <input id="imageFile" type="file" accept="image/*" />
+            <label class="small">وسوم (مفصولة بفاصلة)</label>
+            <input id="imageTags" type="text" placeholder="قبل-بعد, project, featured">
+            <label class="small">عنوان الصورة</label>
+            <input id="imageTitle" type="text" placeholder="عنوان افتراضي">
+            <label class="small">وصف/تعليق</label>
+            <input id="imageCaption" type="text" placeholder="تعليق للصورة">
+            <div style="margin-top:8px;display:flex;gap:8px"><button id="uploadImage" class="btn primary">تحميل</button> <button id="clearImages" class="btn secondary">حذف كل الصور</button></div>
+            <div id="imagesList" style="margin-top:12px"></div>
+          </div>
+
+          <div class="card">
+            <h4>المشروعات وقصص النجاح</h4>
+            <button id="addProject" class="btn primary">إضافة مشروع جديد</button>
+            <div id="projectsList" style="margin-top:12px"></div>
+          </div>
+
+          <div class="card">
+            <h4>التوصيات (Testimonials)</h4>
+            <button id="addTestimonial" class="btn primary">إضافة توصية</button>
+            <div id="testimonialsList" style="margin-top:12px"></div>
+          </div>
+
+          <div class="card">
+            <h4>المقالات</h4>
+            <button id="addArticle" class="btn primary">إضافة مقال جديد</button>
+            <div id="articlesList" style="margin-top:12px"></div>
+          </div>
+
+          <div class="card">
+            <h4>الأسئلة الشائعة</h4>
+            <button id="addFAQ" class="btn primary">إضافة سؤال</button>
+            <div id="faqList" style="margin-top:12px"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <button id="logout" class="btn secondary">خروج</button>
+      </div>
     </div>
   </main>
+
   <script src="admin-script.js"></script>
-  <script src="blog-script.js"></script>
 </body>
 </html>

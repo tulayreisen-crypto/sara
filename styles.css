@@ -1,5 +1,5 @@
-/* styles additions for gallery, testimonials, success stories, newsletter */
-/* appended to existing styles.css */
-.testimonial-slider{min-height:140px;padding:12px}
-.test-item{display:none}
-.success-badge{display:inline-block;background:var(--gold);color:#fff;padding:6px 8px;border-radius:8px;font-weight:700}
+/* appended admin & typography styles */
+:root{ --site-font: 'Segoe UI', system-ui, sans-serif }
+body{font-family:var(--site-font);}
+/* admin forms already styled inline; ensure card styles are consistent */
+.card img{max-width:100%;display:block}
