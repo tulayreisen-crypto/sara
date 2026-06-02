@@ -1,31 +1,59 @@
 :root{
-  --bg:#f6efe9;
-  --burgundy:#3b0f12;
-  --rose:#d4a574;
-  --cream:#fff6f4;
-  --text:#2b1f1f;
+  --bg:#ffffff;
+  --purple:#7C3AED; /* Soft Purple */
+  --lavender:#A78BFA; /* Lavender */
+  --violet-1: linear-gradient(135deg,#A78BFA66,#7C3AED66);
+  --violet-2: linear-gradient(180deg,#F3E8FF,#F8F4FF);
+  --gold:#D4A574;
+  --text:#211829;
+  --muted:#6b5870;
 }
 *{box-sizing:border-box}
-body{font-family: 'Arial', sans-serif;background:var(--bg);color:var(--text);margin:0;line-height:1.6}
-.container{max-width:980px;margin:0 auto;padding:20px}
-.nav{background:linear-gradient(90deg,var(--burgundy),#4a1013);color:var(--cream)}
+html,body{height:100%}
+body{font-family: 'Segoe UI', Tahoma, system-ui, -apple-system, 'Helvetica Neue', Arial; background:var(--bg);color:var(--text);margin:0;line-height:1.6;direction:rtl}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+/* Header / Nav */
+.nav{background:transparent;color:var(--text);position:sticky;top:0;z-index:40;padding:10px 0}
 .nav .container{display:flex;align-items:center;justify-content:space-between}
-.brand{margin:0;padding:12px 0;color:var(--rose)}
-nav a{color:var(--cream);margin-left:16px;text-decoration:none}
-.hero{padding:30px 0}
-.hero-inner{display:flex;gap:20px;align-items:center}
-.hero-photo img{width:220px;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.2)}
-.hero-content h2{font-size:28px;margin:0 0 12px}
-.btn{display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none}
-.primary{background:var(--burgundy);color:var(--cream)}
-.whatsapp{background:transparent;border:2px solid var(--rose);color:var(--burgundy)}
-.about, .services, .testimonials, .faq, .contact{background:white;margin:20px 0;padding:18px;border-radius:12px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.card{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fffaf8);box-shadow:0 4px 12px rgba(0,0,0,0.05)}
-.price{margin-top:10px;font-weight:700;color:var(--burgundy)}
-.test-list blockquote{margin:10px 0;padding:12px;background:#fff7f6;border-left:4px solid var(--rose)}
-.footer{padding:18px;text-align:center;color:#6a4b46}
-@media(max-width:700px){
+.brand{margin:0;padding:8px 0;color:var(--purple);font-weight:700;font-size:20px}
+nav a{color:var(--muted);margin-left:14px;text-decoration:none;padding:8px;border-radius:8px}
+nav a:hover{color:var(--purple);background:rgba(124,58,237,0.06)}
+/* Hero */
+.hero{padding:40px 0}
+.hero-inner{display:flex;gap:24px;align-items:center;background:var(--violet-2);padding:28px;border-radius:18px;box-shadow:0 8px 30px rgba(124,58,237,0.08)}
+.hero-photo img{width:240px;height:240px;object-fit:cover;border-radius:16px;box-shadow:0 12px 40px rgba(16,24,40,0.08);border:6px solid rgba(167,139,250,0.12)}
+.hero-content h2{font-size:28px;margin:0 0 12px;color:var(--purple);line-height:1.2}
+.hero-content p{margin:0 0 16px;color:var(--muted)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:12px;text-decoration:none;border:0;font-weight:600}
+.primary{background:linear-gradient(90deg,var(--purple),#5B21B6);color:#fff;box-shadow:0 8px 24px rgba(124,58,237,0.18)}
+.secondary{background:transparent;border:2px solid rgba(167,139,250,0.18);color:var(--purple)}
+.whatsapp{background:var(--gold);color:#fff}
+/* Section cards */
+.section-box{background:#fff;margin:20px 0;padding:22px;border-radius:14px;box-shadow:0 6px 20px rgba(16,24,40,0.04)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fffaf8);border:1px solid rgba(167,139,250,0.04)}
+.card h4{color:var(--purple);margin:0 0 8px}
+.price{margin-top:10px;font-weight:700;color:var(--gold)}
+/* Testimonials */
+.test-list blockquote{margin:10px 0;padding:12px;background:linear-gradient(90deg,rgba(167,139,250,0.06),rgba(124,58,237,0.03));border-radius:10px;border-left:4px solid var(--gold)}
+/* FAQ */
+details summary{cursor:pointer;padding:12px;border-radius:8px;background:linear-gradient(90deg,#fff,#f8f6ff);border:1px solid rgba(167,139,250,0.04);margin-bottom:8px;font-weight:600}
+/* Contact */
+.social{display:inline-block;margin-left:12px;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,var(--lavender),var(--purple));color:#fff;text-decoration:none}
+/* Footer */
+.footer{padding:22px;text-align:center;color:var(--muted)}
+/* Admin / Booking tweaks */
+.booking-form label{display:block;margin-bottom:10px}
+.booking-form input, .booking-form textarea, .booking-form select{width:100%;padding:10px;border-radius:8px;border:1px solid #efeaf6;background:#fff}
+/* Responsiveness */
+@media(max-width:900px){
   .hero-inner{flex-direction:column;text-align:center}
+  .hero-photo img{width:200px;height:200px}
   .nav .container{flex-direction:column;gap:10px}
+}
+@media(max-width:480px){
+  .container{padding:14px}
+  .hero-content h2{font-size:20px}
+  .brand{font-size:18px}
 }
