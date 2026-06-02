@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - سارة النصار</title>
+    <link rel="stylesheet" href="sara-styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="container">
+            <h1>لوحة التحكم</h1>
+            <button id="logoutBtn" class="btn btn-secondary">تسجيل الخروج</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <button class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i> لوحة التحكم
+                </button>
+                <button class="nav-item" data-section="bookings">
+                    <i class="fas fa-calendar"></i> الحجوزات
+                </button>
+                <button class="nav-item" data-section="services">
+                    <i class="fas fa-cogs"></i> الخدمات
+                </button>
+                <button class="nav-item" data-section="testimonials">
+                    <i class="fas fa-star"></i> آراء العملاء
+                </button>
+                <button class="nav-item" data-section="settings">
+                    <i class="fas fa-sliders-h"></i> الإعدادات
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="admin-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="admin-section active">
+                <h2>لوحة التحكم</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="stat-content">
+                            <h3>إجمالي الحجوزات</h3>
+                            <p class="stat-number" id="totalBookings">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-content">
+                            <h3>حجوزات قادمة</h3>
+                            <p class="stat-number" id="upcomingBookings">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-star"></i></div>
+                        <div class="stat-content">
+                            <h3>التقييمات</h3>
+                            <p class="stat-number" id="totalReviews">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-bookings">
+                    <h3>آخر الحجوزات</h3>
+                    <table id="recentBookingsTable">
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>الخدمة</th>
+                                <th>التاريخ</th>
+                                <th>الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Bookings Section -->
+            <section id="bookings" class="admin-section">
+                <h2>إدارة الحجوزات</h2>
+                <div class="section-controls">
+                    <input type="date" id="bookingDateFilter" />
+                    <select id="bookingStatusFilter">
+                        <option>جميع الحالات</option>
+                        <option>جديد</option>
+                        <option>مؤكد</option>
+                        <option>مكتمل</option>
+                        <option>ملغى</option>
+                    </select>
+                </div>
+                <table class="bookings-table">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>الهاتف</th>
+                            <th>الخدمة</th>
+                            <th>التاريخ</th>
+                            <th>الوقت</th>
+                            <th>الحالة</th>
+                            <th>إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTableBody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; color: #999;">لا توجد حجوزات</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="admin-section">
+                <h2>إدارة الخدمات</h2>
+                <button class="btn btn-primary" onclick="openServiceModal()">إضافة خدمة جديدة</button>
+                <div class="services-list" id="servicesList">
+                    <!-- Services will be listed here -->
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="admin-section">
+                <h2>آراء العملاء</h2>
+                <button class="btn btn-primary" onclick="openTestimonialModal()">إضافة رأي جديد</button>
+                <div class="testimonials-list" id="testimonialsList">
+                    <!-- Testimonials will be listed here -->
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="admin-section">
+                <h2>الإعدادات</h2>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label>رقم الواتساب</label>
+                        <input type="tel" id="whatsappNumber" placeholder="+966xxxxxxxxx" />
+                    </div>
+                    <div class="form-group">
+                        <label>رابط إنستجرام</label>
+                        <input type="url" id="instagramLink" placeholder="https://instagram.com/" />
+                    </div>
+                    <div class="form-group">
+                        <label>رابط تيك توك</label>
+                        <input type="url" id="tiktokLink" placeholder="https://tiktok.com/" />
+                    </div>
+                    <div class="form-group">
+                        <label>رابط يوتيوب</label>
+                        <input type="url" id="youtubeLink" placeholder="https://youtube.com/" />
+                    </div>
+                    <div class="form-group">
+                        <label>بريد إلكتروني للإشعارات</label>
+                        <input type="email" id="notificationEmail" placeholder="sara@example.com" />
+                    </div>
+                    <button class="btn btn-primary" onclick="saveSettings()">حفظ الإعدادات</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Service Modal -->
+    <div id="serviceModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة خدمة جديدة</h3>
+                <button class="modal-close" onclick="closeServiceModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>اسم الخدمة</label>
+                    <input type="text" id="serviceName" />
+                </div>
+                <div class="form-group">
+                    <label>الوصف</label>
+                    <textarea id="serviceDescription" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>المدة</label>
+                    <input type="text" id="serviceDuration" placeholder="60 دقيقة" />
+                </div>
+                <div class="form-group">
+                    <label>السعر</label>
+                    <input type="number" id="servicePrice" placeholder="0" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="saveService()">حفظ</button>
+                <button class="btn btn-secondary" onclick="closeServiceModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial Modal -->
+    <div id="testimonialModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة رأي جديد</h3>
+                <button class="modal-close" onclick="closeTestimonialModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>اسم العميل</label>
+                    <input type="text" id="testimonialAuthor" />
+                </div>
+                <div class="form-group">
+                    <label>الرأي</label>
+                    <textarea id="testimonialText" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>التقييم</label>
+                    <select id="testimonialRating">
+                        <option>5 نجوم</option>
+                        <option>4 نجوم</option>
+                        <option>3 نجوم</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="saveTestimonial()">حفظ</button>
+                <button class="btn btn-secondary" onclick="closeTestimonialModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>

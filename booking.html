@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احجز جلستك - سارة النصار</title>
+    <link rel="stylesheet" href="sara-styles.css">
+    <link rel="stylesheet" href="booking-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">سارة النصار</div>
+            <a href="sara-index.html" class="back-link">← العودة للرئيسية</a>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container">
+            <h1 class="booking-title">احجز جلستك</h1>
+            <p class="booking-subtitle">اختر الخدمة التي تناسبك وحدد موعد جلستك</p>
+            
+            <div class="booking-container">
+                <form class="booking-form" id="bookingForm">
+                    <!-- Personal Info -->
+                    <div class="form-section">
+                        <h3>البيانات الشخصية</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>الاسم الكامل *</label>
+                                <input type="text" name="fullName" required />
+                            </div>
+                            <div class="form-group">
+                                <label>العمر *</label>
+                                <input type="number" name="age" required />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>رقم الهاتف *</label>
+                                <input type="tel" name="phone" required />
+                            </div>
+                            <div class="form-group">
+                                <label>البريد الإلكتروني *</label>
+                                <input type="email" name="email" required />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>النوع *</label>
+                                <select name="gender" required>
+                                    <option>اختر النوع</option>
+                                    <option>ذكر</option>
+                                    <option>أنثى</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>طريقة التواصل المفضلة *</label>
+                                <select name="preferredContact" required>
+                                    <option>اختر طريقة التواصل</option>
+                                    <option>واتساب</option>
+                                    <option>هاتف</option>
+                                    <option>بريد إلكتروني</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Session Details -->
+                    <div class="form-section">
+                        <h3>تفاصيل الجلسة</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>نوع الخدمة *</label>
+                                <select name="sessionType" id="sessionType" required>
+                                    <option>اختر نوع الخدمة</option>
+                                    <option>الكوتشنج - 60 دقيقة</option>
+                                    <option>السايكوسوماتيك - 90 دقيقة</option>
+                                    <option>التنويم الإيحائي - 90 دقيقة</option>
+                                    <option>استشارة أسرية - فردية</option>
+                                    <option>استشارة زوجية</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>التاريخ المفضل *</label>
+                                <input type="date" name="preferredDate" required />
+                            </div>
+                            <div class="form-group">
+                                <label>الوقت المفضل *</label>
+                                <select name="preferredTime" required>
+                                    <option>اختر الوقت</option>
+                                    <option>9:00 AM</option>
+                                    <option>10:00 AM</option>
+                                    <option>11:00 AM</option>
+                                    <option>12:00 PM</option>
+                                    <option>2:00 PM</option>
+                                    <option>3:00 PM</option>
+                                    <option>4:00 PM</option>
+                                    <option>5:00 PM</option>
+                                    <option>6:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div class="form-section">
+                        <h3>ملاحظات إضافية</h3>
+                        <div class="form-group">
+                            <label>أخبريني عن احتياجاتك أو مخاوفك</label>
+                            <textarea name="notes" rows="5" placeholder="أخبريني بما تود أن تحققيه في هذه الجلسة"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">تأكيد الحجز</button>
+                        <button type="reset" class="btn btn-secondary">مسح البيانات</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message" style="display: none;">
+        <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>تم استقبال حجزك بنجاح!</h3>
+            <p>شكراً لك على الحجز. سيتم التواصل معك قريباً لتأكيد موعد جلستك.</p>
+            <button onclick="location.href='sara-index.html'" class="btn btn-primary">العودة للرئيسية</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 سارة النصار. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="booking-script.js"></script>
+</body>
+</html>
