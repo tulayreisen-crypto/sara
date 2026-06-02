@@ -147,15 +147,16 @@ table td {
     box-shadow: var(--shadow);
 }
 
-.services-list,
+.table-responsive {
+    overflow-x: auto;
+}
+
 .testimonials-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-top: 1.5rem;
 }
 
-.service-item,
 .testimonial-item {
     background: white;
     padding: 1.5rem;
@@ -163,21 +164,19 @@ table td {
     box-shadow: var(--shadow);
 }
 
-.service-item h3,
 .testimonial-item h3 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
-.service-item-actions,
 .testimonial-item-actions {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
 }
 
-.service-item-actions button,
-.testimonial-item-actions button {
+.btn-edit,
+.btn-delete {
     flex: 1;
     padding: 0.5rem;
     border: none;
@@ -202,6 +201,35 @@ table td {
     border-radius: 10px;
     max-width: 600px;
     box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent-color);
 }
 
 /* Modal */
@@ -274,10 +302,5 @@ table td {
     .admin-nav {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    }
-
-    .nav-item {
-        padding: 0.5rem;
-        flex-direction: column;
     }
 }

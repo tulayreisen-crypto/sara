@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Collect form data
             const formData = new FormData(bookingForm);
             const bookingData = {
+                id: Date.now(),
                 fullName: formData.get('fullName'),
                 age: formData.get('age'),
                 phone: formData.get('phone'),
@@ -19,20 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 preferredDate: formData.get('preferredDate'),
                 preferredTime: formData.get('preferredTime'),
                 notes: formData.get('notes'),
+                status: 'pending',
                 submittedAt: new Date().toISOString()
             };
             
-            // Save to localStorage
             let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
             bookings.push(bookingData);
             localStorage.setItem('bookings', JSON.stringify(bookings));
             
-            // Show success message
             document.getElementById('bookingForm').parentElement.style.display = 'none';
             document.getElementById('successMessage').style.display = 'flex';
-            
-            // Log to console (in production, send to server)
-            console.log('Booking submitted:', bookingData);
         });
     }
 });

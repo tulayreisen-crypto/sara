@@ -1,28 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sara Coach 777 - Professional Coaching</title>
+    <meta name="description" content="سارة النصار - كوتشنج، سايكوسوماتيك، تنويم إيحائي. رحلة تحول عميق نحو الشفاء والتوازن والوعي">
+    <meta name="keywords" content="كوتشنج، تنويم إيحائي، سايكوسوماتيك، تطوير الذات، الاستشارات الأسرية، العلاج التكاملي">
+    <title>سارة النصار - الكوتشنج والعلاج التكاملي</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
-            <div class="nav-brand">Sara Coach 777</div>
+            <div class="nav-brand">سارة النصار</div>
             <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#booking">Booking</a></li>
-                <li><button id="langToggle" class="lang-toggle">العربية</button></li>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عني</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#testimonials">آراء العملاء</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+                <li><a href="#contact">التواصل</a></li>
+                <li><a href="booking.html" class="btn-book">احجز جلستك</a></li>
             </ul>
         </div>
     </nav>
@@ -31,12 +35,35 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Welcome to Sara Coach 777</h1>
-                <p>Transform Your Life Through Professional Coaching</p>
-                <button class="cta-btn" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">Book Your Session</button>
+                <h1 class="hero-title">رحلة تحول عميق نحو الشفاء والتوازن والوعي</h1>
+                <p class="hero-subtitle">أساعدك على التحرر من الأنماط القديمة، فهم رسائل الجسد والعقل، وإعادة بناء حياة أكثر توازناً ووضوحاً وسلاماً.</p>
+                <div class="hero-buttons">
+                    <a href="booking.html" class="btn btn-primary">احجز جلستك الآن</a>
+                    <a href="https://wa.me/966544123456" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
+                    </a>
+                </div>
             </div>
             <div class="hero-image">
-                <img src="sara-coach.jpg" alt="Sara Coach 777" id="heroImage">
+                <svg class="placeholder-image" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#8b4953;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#c4a796;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="400" height="500" fill="url(#grad1)" rx="20"/>
+                    <circle cx="200" cy="150" r="80" fill="#d4af7a" opacity="0.3"/>
+                    <path d="M 200 80 Q 240 120 240 180 Q 240 220 200 240 Q 160 220 160 180 Q 160 120 200 80" fill="#f5f1ed"/>
+                    <circle cx="180" cy="170" r="8" fill="#8b4953"/>
+                    <circle cx="220" cy="170" r="8" fill="#8b4953"/>
+                    <path d="M 190 200 Q 200 210 210 200" stroke="#8b4953" stroke-width="2" fill="none"/>
+                    <ellipse cx="200" cy="300" rx="100" ry="120" fill="#d4af7a" opacity="0.2"/>
+                    <path d="M 150 280 L 140 400" stroke="#c4a796" stroke-width="4"/>
+                    <path d="M 250 280 L 260 400" stroke="#c4a796" stroke-width="4"/>
+                    <path d="M 170 320 L 160 420" stroke="#c4a796" stroke-width="3"/>
+                    <path d="M 230 320 L 240 420" stroke="#c4a796" stroke-width="3"/>
+                </svg>
             </div>
         </div>
     </section>
@@ -44,11 +71,39 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2>About Me</h2>
+            <h2 class="section-title">عني</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p id="aboutText">I am a certified professional coach with 10+ years of experience helping individuals achieve their personal and professional goals. My approach combines evidence-based coaching techniques with a deep understanding of human psychology.</p>
-                    <p id="aboutText2">I specialize in life coaching, career development, and personal transformation. My mission is to empower you to unlock your full potential and create meaningful change in your life.</p>
+                    <p>أنا سارة النصار، مدربة معتمدة متخصصة في الكوتشنج والسايكوسوماتيك والتنويم الإيحائي. بخبرة عملية واسعة، أساعد عملائي على:</p>
+                    <ul class="about-list">
+                        <li><i class="fas fa-heart"></i> فهم الأنماط العاطفية والسلوكية</li>
+                        <li><i class="fas fa-lock-open"></i> تحرير الحجب الداخلية والمعتقدات المقيدة</li>
+                        <li><i class="fas fa-balance-scale"></i> إحداث تحول شخصي دائم وحقيقي</li>
+                        <li><i class="fas fa-brain"></i> اكتشاف الإمكانيات الكاملة للعقل والجسد</li>
+                        <li><i class="fas fa-smile"></i> بناء علاقات صحية ومتوازنة</li>
+                        <li><i class="fas fa-sparkles"></i> تحقيق السلام الداخلي والوضوح</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <svg class="placeholder-image" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c4a796;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8b4953;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="400" height="500" fill="url(#grad2)" rx="20"/>
+                        <circle cx="200" cy="120" r="70" fill="#d4af7a" opacity="0.4"/>
+                        <path d="M 200 60 Q 250 100 250 170 Q 250 210 200 230 Q 150 210 150 170 Q 150 100 200 60" fill="#f5f1ed"/>
+                        <circle cx="175" cy="160" r="7" fill="#8b4953"/>
+                        <circle cx="225" cy="160" r="7" fill="#8b4953"/>
+                        <path d="M 185 195 Q 200 205 215 195" stroke="#8b4953" stroke-width="2" fill="none"/>
+                        <path d="M 200 240 L 180 380" stroke="#c4a796" stroke-width="5"/>
+                        <path d="M 200 240 L 220 380" stroke="#c4a796" stroke-width="5"/>
+                        <path d="M 155 300 L 140 450" stroke="#c4a796" stroke-width="4"/>
+                        <path d="M 245 300 L 260 450" stroke="#c4a796" stroke-width="4"/>
+                        <rect x="160" y="350" width="80" height="100" fill="#d4af7a" opacity="0.2" rx="10"/>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -57,74 +112,207 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2>Coaching Services</h2>
+            <h2 class="section-title">الخدمات</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <i class="fas fa-target"></i>
-                    <h3 id="service1Title">Life Coaching</h3>
-                    <p id="service1Desc">Achieve your life goals and create lasting positive change</p>
-                    <span class="price">$80/hour</span>
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>الكوتشنج</h3>
+                    <p>جلسات فردية لاكتشاف الذات، تحقيق الأهداف، بناء الثقة بالنفس وتطوير الحياة الشخصية والمهنية.</p>
+                    <a href="booking.html?service=coaching" class="service-link">اعرف المزيد</a>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-briefcase"></i>
-                    <h3 id="service2Title">Career Coaching</h3>
-                    <p id="service2Desc">Advance your career and find professional fulfillment</p>
-                    <span class="price">$90/hour</span>
+                    <div class="service-icon">
+                        <i class="fas fa-body"></i>
+                    </div>
+                    <h3>السايكوسوماتيك</h3>
+                    <p>فهم العلاقة بين العقل والجسد، وتحرير المشاعر والضغوط المخزنة داخل الجسم بطرق فعالة وآمنة.</p>
+                    <a href="booking.html?service=psychosomatic" class="service-link">اعرف المزيد</a>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-heart"></i>
-                    <h3 id="service3Title">Personal Development</h3>
-                    <p id="service3Desc">Build confidence and develop your personal potential</p>
-                    <span class="price">$85/hour</span>
+                    <div class="service-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>التنويم الإيحائي</h3>
+                    <p>الوصول إلى العقل الباطن وإعادة برمجة المعتقدات المقيدة وتحرير المخاوف والعادات السيئة.</p>
+                    <a href="booking.html?service=hypnotherapy" class="service-link">اعرف المزيد</a>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-users"></i>
-                    <h3 id="service4Title">Group Workshops</h3>
-                    <p id="service4Desc">Interactive sessions for teams and organizations</p>
-                    <span class="price">Contact for pricing</span>
+                    <div class="service-icon">
+                        <i class="fas fa-people-arrows"></i>
+                    </div>
+                    <h3>الاستشارات الأسرية والزوجية</h3>
+                    <p>تحسين التواصل، حل النزاعات، دعم العلاقات الأسرية والزوجية وبناء علاقات صحية ومستقرة.</p>
+                    <a href="booking.html?service=family" class="service-link">اعرف المزيد</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section id="booking" class="booking">
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
         <div class="container">
-            <h2 id="bookingTitle">Book Your Session</h2>
-            <div class="booking-content">
-                <div class="calendar-placeholder">
-                    <iframe src="https://calendly.com/your-calendly-link/30min" width="100%" height="600" frameborder="0"></iframe>
+            <h2 class="section-title">الأسعار</h2>
+            <div class="pricing-grid" id="pricingContainer">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">جلسة كوتشنج فردية</h3>
+                    <p class="pricing-duration"><i class="fas fa-clock"></i> 60 دقيقة</p>
+                    <p class="pricing-price">300 ر.س</p>
+                    <p class="pricing-description">جلسة فردية متكاملة</p>
+                    <a href="booking.html" class="btn btn-primary" style="width: 100%; text-align: center;">احجز الآن</a>
                 </div>
-                <div class="booking-info">
-                    <h3 id="sessionInfo">Session Information</h3>
-                    <ul>
-                        <li id="info1">✓ 30-minute discovery session</li>
-                        <li id="info2">✓ Flexible scheduling</li>
-                        <li id="info3">✓ Online or in-person options</li>
-                        <li id="info4">✓ Money-back guarantee</li>
-                    </ul>
-                    <button class="whatsapp-btn" onclick="openWhatsApp()">
-                        <i class="fab fa-whatsapp"></i> Contact via WhatsApp
-                    </button>
+                <div class="pricing-card">
+                    <h3 class="pricing-title">جلسة علاجية</h3>
+                    <p class="pricing-duration"><i class="fas fa-clock"></i> 90 دقيقة</p>
+                    <p class="pricing-price">450 ر.س</p>
+                    <p class="pricing-description">جلسة عميقة للعلاج</p>
+                    <a href="booking.html" class="btn btn-primary" style="width: 100%; text-align: center;">احجز الآن</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="pricing-title">جلسة تنويم إيحائي</h3>
+                    <p class="pricing-duration"><i class="fas fa-clock"></i> 90 دقيقة</p>
+                    <p class="pricing-price">450 ر.س</p>
+                    <p class="pricing-description">تنويم إيحائي علاجي</p>
+                    <a href="booking.html" class="btn btn-primary" style="width: 100%; text-align: center;">احجز الآن</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="pricing-title">استشارة أسرية فردية</h3>
+                    <p class="pricing-duration"><i class="fas fa-clock"></i> 60 دقيقة</p>
+                    <p class="pricing-price">350 ر.س</p>
+                    <p class="pricing-description">استشارة للفرد</p>
+                    <a href="booking.html" class="btn btn-primary" style="width: 100%; text-align: center;">احجز الآن</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Links -->
-    <section class="social-links">
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2 id="followTitle">Follow Me</h2>
-            <div class="social-icons">
-                <a href="https://www.youtube.com" target="_blank" title="YouTube" class="social-icon youtube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.instagram.com" target="_blank" title="Instagram" class="social-icon instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com" target="_blank" title="TikTok" class="social-icon tiktok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
+            <h2 class="section-title">آراء العملاء</h2>
+            <div class="testimonials-grid" id="testimonialsContainer">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"سارة غيّرت حياتي بشكل جذري. جلساتها ساعدتني على فهم نفسي بشكل أعمق وتغييري للأفضل. شكراً لك يا سارة!"</p>
+                    <div class="testimonial-author">فاطمة أحمد</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"الخدمات احترافية وفعّالة جداً. أنصح بها بشدة. سارة مدربة متمكنة وداعمة وتهتم حقاً برحلة عملائها."</p>
+                    <div class="testimonial-author">ليلى محمد</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"تجربة رائعة. سارة مدربة متمكنة وداعمة. استطعت التغلب على مخاوفي وتحسين علاقتي بنفسي والآخرين."</p>
+                    <div class="testimonial-author">نور علي</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"��ا بعد جلسات التنويم الإيحائي مع سارة، تغيرت حياتي تماماً. شعرت بسلام داخلي لم أشعر به من قبل."</p>
+                    <div class="testimonial-author">سارة إبراهيم</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"الاستشارة الزوجية مع سارة حسّنت علاقتي بزوجي بشكل كبير. نحن أكثر تفهماً وتقارباً الآن."</p>
+                    <div class="testimonial-author">مريم حسن</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"سارة ساعدتني على تجاوز ألم عاطفي عميق. طريقتها الحنونة والفعالة جعلتني أشعر بالأمان والتحسن."</p>
+                    <div class="testimonial-author">دينا محمود</div>
+                    <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            <div class="faq-container" id="faqContainer">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كم تستغرق الجلسة الواحدة؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">تستغرق الجلسات بين 60-90 دقيقة حسب نوع الخدمة. جلسات الكوتشنج الأساسية 60 دقيقة، بينما الجلسات العلاجية والتنويم 90 دقيقة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يمكن الحجز عبر الإنترنت؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">نعم، يمكنك الحجز عبر الموقع أو التواصل معي عبر الواتساب أو الهاتف. الجلسات تتم بشكل فردي وآمن.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما الفرق بين الكوتشنج والسايكوسوماتيك؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">الكوتشنج يركز على الأهداف والتطوير الشخصي، بينما السايكوسوماتيك يركز على العلاقة بين العقل والجسد وتحرير المشاعر المخزنة.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل هناك جلسات تجريبية؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">نعم، يمكنك حجز جلسة استشارية مجانية 30 دقيقة للتعرف على الخدمات والتأكد من التوافق قبل الالتزام.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل التنويم الإيحائي آمن؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">نعم، التنويم الإيحائي آمن تماماً عند إجراؤه من قبل متخصص معتمد. أنت تحتفظ بالسيطرة الكاملة وتستطيع الخروج منه في أي وقت.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كم عدد الجلسات المطلوبة للرؤية النتائج؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">يختلف حسب كل حالة، لكن عادة يبدأ الناس برؤية التحسّن بعد 3-5 جلسات. بعض الحالات تحتاج وقتاً أطول حسب عمق المشكلة.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">التواصل</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>تواصلي معي عبر</h3>
+                    <div class="contact-methods">
+                        <a href="https://wa.me/966544123456" class="contact-btn whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> واتساب
+                        </a>
+                        <a href="https://instagram.com" class="contact-btn instagram" target="_blank">
+                            <i class="fab fa-instagram"></i> إنستجرام
+                        </a>
+                        <a href="https://tiktok.com" class="contact-btn tiktok" target="_blank">
+                            <i class="fab fa-tiktok"></i> تيك توك
+                        </a>
+                        <a href="https://youtube.com" class="contact-btn youtube" target="_blank">
+                            <i class="fab fa-youtube"></i> يوتيوب
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="الاسم" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="البريد الإلكتروني" required />
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="الرسالة" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">إرسال</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -132,64 +320,9 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Sara Coach 777. All rights reserved.</p>
+            <p>&copy; 2024 سارة النصار. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
-
-    <!-- Admin Panel Button -->
-    <button class="admin-btn" id="adminBtn" onclick="openAdminPanel()">Admin</button>
-
-    <!-- Admin Panel Modal -->
-    <div id="adminModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeAdminPanel()">&times;</span>
-            <h2>Admin Panel</h2>
-            <div class="admin-tabs">
-                <button class="tab-btn active" onclick="switchTab('content')">Edit Content</button>
-                <button class="tab-btn" onclick="switchTab('services')">Edit Services</button>
-                <button class="tab-btn" onclick="switchTab('social')">Social Links</button>
-            </div>
-            
-            <div id="content" class="tab-content active">
-                <h3>Edit Main Content</h3>
-                <label>About Text:</label>
-                <textarea id="aboutInput" rows="4"></textarea>
-                <label>Hero Title:</label>
-                <input type="text" id="heroTitleInput">
-                <label>Hero Subtitle:</label>
-                <input type="text" id="heroSubtitleInput">
-                <button class="save-btn" onclick="saveContent()">Save Changes</button>
-            </div>
-
-            <div id="services" class="tab-content">
-                <h3>Edit Services</h3>
-                <div class="service-edit">
-                    <label>Service 1 Title:</label>
-                    <input type="text" id="service1Input">
-                    <label>Service 2 Title:</label>
-                    <input type="text" id="service2Input">
-                    <label>Service 3 Title:</label>
-                    <input type="text" id="service3Input">
-                    <label>Service 4 Title:</label>
-                    <input type="text" id="service4Input">
-                    <button class="save-btn" onclick="saveServices()">Save Services</button>
-                </div>
-            </div>
-
-            <div id="social" class="tab-content">
-                <h3>Update Social Links</h3>
-                <label>YouTube URL:</label>
-                <input type="text" id="youtubeInput" placeholder="https://youtube.com/...">
-                <label>Instagram URL:</label>
-                <input type="text" id="instagramInput" placeholder="https://instagram.com/...">
-                <label>TikTok URL:</label>
-                <input type="text" id="tiktokInput" placeholder="https://tiktok.com/...">
-                <label>WhatsApp Number (with country code):</label>
-                <input type="text" id="whatsappInput" placeholder="+1234567890">
-                <button class="save-btn" onclick="saveSocial()">Save Links</button>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>

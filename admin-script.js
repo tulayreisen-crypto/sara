@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setupAdminDashboard();
     loadBookings();
-    loadServices();
     loadTestimonials();
     loadSettings();
 });
@@ -18,12 +17,11 @@ function isAuthenticated() {
 
 function promptPassword() {
     const password = prompt('أدخل كلمة المرور:');
-    // Simple password check (in production, use proper backend authentication)
-    if (password === '1234') {
+    if (password === 'sara2024') {
         sessionStorage.setItem('adminAuth', 'true');
     } else {
         alert('كلمة المرور غير صحيحة');
-        window.location.href = 'sara-index.html';
+        window.location.href = 'index.html';
     }
 }
 
@@ -31,21 +29,18 @@ function promptPassword() {
 function setupAdminDashboard() {
     document.querySelectorAll('.nav-item').forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all items
             document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
             
-            // Add active class to clicked item
             btn.classList.add('active');
             const section = document.getElementById(btn.dataset.section);
             if (section) section.classList.add('active');
         });
     });
     
-    // Logout button
     document.getElementById('logoutBtn').addEventListener('click', () => {
         sessionStorage.removeItem('adminAuth');
-        window.location.href = 'sara-index.html';
+        window.location.href = 'index.html';
     });
 }
 
@@ -68,49 +63,22 @@ function loadBookings() {
             <td>${booking.sessionType}</td>
             <td>${booking.preferredDate}</td>
             <td>${booking.preferredTime}</td>
-            <td><span class="status-badge">جديد</span></td>
+            <td><span class="status-badge">${booking.status}</span></td>
             <td>
-                <button class="status-btn" onclick="updateBookingStatus()">تأكيد</button>
-                <button class="delete-btn" onclick="deleteBooking('${booking.email}')">حذف</button>
+                <button class="status-btn" onclick="updateBookingStatus('${booking.id}')">تأكيد</button>
+                <button class="delete-btn" onclick="deleteBooking('${booking.id}')">حذف</button>
             </td>
         </tr>
     `).join('');
     
-    // Update stats
     updateDashboardStats(bookings);
-}
-
-// Load Services
-function loadServices() {
-    const services = JSON.parse(localStorage.getItem('services')) || [
-        { id: 1, name: 'الكوتشنج', description: 'جلسات فردية', duration: '60 دقيقة', price: 300 },
-        { id: 2, name: 'السايكوسوماتيك', description: 'العلاقة بين العقل والجسد', duration: '90 دقيقة', price: 450 },
-        { id: 3, name: 'التنويم الإيحائي', description: 'تنويم إيحائي علاجي', duration: '90 دقيقة', price: 450 }
-    ];
-    
-    localStorage.setItem('services', JSON.stringify(services));
-    
-    const list = document.getElementById('servicesList');
-    if (!list) return;
-    
-    list.innerHTML = services.map(service => `
-        <div class="service-item">
-            <h3>${service.name}</h3>
-            <p>${service.description}</p>
-            <p>المدة: ${service.duration} | السعر: ${service.price} ر.س</p>
-            <div class="service-item-actions">
-                <button class="btn-edit" onclick="editService(${service.id})">تعديل</button>
-                <button class="btn-delete" onclick="deleteService(${service.id})">حذف</button>
-            </div>
-        </div>
-    `).join('');
 }
 
 // Load Testimonials
 function loadTestimonials() {
     const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [
-        { id: 1, author: 'فاطمة أحمد', text: 'سارة غيّرت حياتي', rating: 5 },
-        { id: 2, author: 'ليلى محمد', text: 'خدمات احترافية', rating: 5 }
+        { id: 1, author: 'فاطمة أحمد', text: 'سارة غيّرت حياتي بشكل جذري', rating: 5 },
+        { id: 2, author: 'ليلى محمد', text: 'خدمات احترافية وفعّالة', rating: 5 }
     ];
     
     localStorage.setItem('testimonials', JSON.stringify(testimonials));
@@ -124,7 +92,6 @@ function loadTestimonials() {
             <p>"${testimonial.text}"</p>
             <p>التقييم: ${'⭐'.repeat(testimonial.rating)}</p>
             <div class="testimonial-item-actions">
-                <button class="btn-edit">تعديل</button>
                 <button class="btn-delete" onclick="deleteTestimonial(${testimonial.id})">حذف</button>
             </div>
         </div>
@@ -134,7 +101,7 @@ function loadTestimonials() {
 // Load Settings
 function loadSettings() {
     const settings = JSON.parse(localStorage.getItem('adminSettings')) || {
-        whatsapp: '+966xxxxxxxxx',
+        whatsapp: '+966544123456',
         instagram: 'https://instagram.com',
         tiktok: 'https://tiktok.com',
         youtube: 'https://youtube.com',
@@ -153,30 +120,17 @@ function updateDashboardStats(bookings) {
     document.getElementById('totalBookings').textContent = bookings.length;
     document.getElementById('upcomingBookings').textContent = bookings.filter(b => new Date(b.preferredDate) > new Date()).length;
     document.getElementById('totalReviews').textContent = (JSON.parse(localStorage.getItem('testimonials')) || []).length;
-}
-
-// Service Modal
-function openServiceModal() {
-    document.getElementById('serviceModal').style.display = 'flex';
-}
-
-function closeServiceModal() {
-    document.getElementById('serviceModal').style.display = 'none';
-}
-
-function saveService() {
-    const name = document.getElementById('serviceName').value;
-    const description = document.getElementById('serviceDescription').value;
-    const duration = document.getElementById('serviceDuration').value;
-    const price = document.getElementById('servicePrice').value;
     
-    let services = JSON.parse(localStorage.getItem('services')) || [];
-    services.push({ id: Date.now(), name, description, duration, price });
-    localStorage.setItem('services', JSON.stringify(services));
-    
-    loadServices();
-    closeServiceModal();
-    alert('تم إضافة الخدمة بنجاح!');
+    const recentBookingsTable = document.querySelector('#recentBookingsTable tbody');
+    const recent = bookings.slice(-5).reverse();
+    recentBookingsTable.innerHTML = recent.map(booking => `
+        <tr>
+            <td>${booking.fullName}</td>
+            <td>${booking.sessionType}</td>
+            <td>${booking.preferredDate}</td>
+            <td>${booking.status}</td>
+        </tr>
+    `).join('');
 }
 
 // Testimonial Modal
@@ -192,6 +146,11 @@ function saveTestimonial() {
     const author = document.getElementById('testimonialAuthor').value;
     const text = document.getElementById('testimonialText').value;
     const rating = parseInt(document.getElementById('testimonialRating').value);
+    
+    if (!author || !text) {
+        alert('الرجاء ملء جميع الحقول');
+        return;
+    }
     
     let testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
     testimonials.push({ id: Date.now(), author, text, rating });
@@ -217,15 +176,6 @@ function saveSettings() {
 }
 
 // Delete Functions
-function deleteService(id) {
-    if (confirm('هل أنت متأكد من حذف هذه الخدمة؟')) {
-        let services = JSON.parse(localStorage.getItem('services')) || [];
-        services = services.filter(s => s.id !== id);
-        localStorage.setItem('services', JSON.stringify(services));
-        loadServices();
-    }
-}
-
 function deleteTestimonial(id) {
     if (confirm('هل أنت متأكد من حذف هذا الرأي؟')) {
         let testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
@@ -235,15 +185,22 @@ function deleteTestimonial(id) {
     }
 }
 
-function deleteBooking(email) {
+function deleteBooking(id) {
     if (confirm('هل أنت متأكد من حذف هذا الحجز؟')) {
         let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-        bookings = bookings.filter(b => b.email !== email);
+        bookings = bookings.filter(b => b.id !== id);
         localStorage.setItem('bookings', JSON.stringify(bookings));
         loadBookings();
     }
 }
 
-function updateBookingStatus() {
-    alert('تم تحديث حالة الحجز!');
+function updateBookingStatus(id) {
+    let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+    const booking = bookings.find(b => b.id == id);
+    if (booking) {
+        booking.status = 'confirmed';
+        localStorage.setItem('bookings', JSON.stringify(bookings));
+        loadBookings();
+        alert('تم تأكيد الحجز!');
+    }
 }
