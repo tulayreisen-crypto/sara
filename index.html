@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sara Al-Nassar — كوتشنج • سايكوسوماتيك • تنويم إيحائي</title>
+  <title>سارة الناصر — كوتشنج • سايكوسوماتيك • تنويم إيحائي</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,27 +21,57 @@
   </header>
 
   <main>
-    <section class="hero">
+    <!-- Hero with inspirational background -->
+    <section class="hero" aria-label="الصفحة الرئيسية">
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-inner container">
-        <div class="hero-photo">
-          <img src="sara-photo.svg" alt="Sara Al-Nassar">
+        <div class="hero-photo" role="img" aria-label="صورة سارة">
+          <img src="sara-photo.svg" alt="سارة الناصر" loading="lazy">
         </div>
         <div class="hero-content">
-          <h2>رحلة تحول عميق نحو الشفاء والتوازن والوعي</h2>
-          <p>أساعدك على التحرر من الأنماط القديمة، فهم رسائل الجسد والعقل، وإعادة بناء حياة أكثر توازناً ووضوحاً وسلاماً.</p>
+          <h2 class="hero-title">رحلة تحول عميق نحو الشفاء والتوازن والوعي</h2>
+          <p class="hero-lead">أساعدك على التحرر من الأنماط القديمة، فهم رسائل الجسد والعقل، وإعادة بناء حياة أكثر توازناً ووضوحاً وسلاماً.</p>
           <div class="cta">
             <a class="btn primary" href="booking.html">احجز جلستك الآن</a>
-            <a class="btn whatsapp" href="https://wa.me/0000000000" target="_blank">تواصل عبر واتساب</a>
+            <a class="btn secondary" href="https://wa.me/0000000000" target="_blank">تواصل عبر واتساب</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- About section: biography, experience, certifications, mission -->
     <section id="about" class="container about section-box">
       <h3>من أنا</h3>
-      <p>سارة الناصر مدربة معتمدة متخصصة في الكوتشنج، السايكوسوماتيك، والتنويم الإيحائي. أعمل مع العملاء لتحرير العوائق الداخلية وإعادة بناء حياة متوازنة.</p>
+      <div class="about-inner">
+        <div class="about-text">
+          <p class="lead">أنا سارة الناصر، مدربة معتمدة ومتخصصة في الكوتشنج، السايكوسوماتيك، والتنويم الإيحائي. أعمل مع الأفراد والأسر لمساعدتهم على اكتشاف جذور التكرارات السلوكية، تحرير المشاعر السلبية المخزنة في الجسم، وإطلاق طاقات الحياة الكامنة لتحقيق التوازن والرفاهية.</p>
+
+          <h4>الخبرة العملية</h4>
+          <ul>
+            <li>أكثر من 8 سنوات خبرة في التدريب الشخصي والعلاج التكميلي.</li>
+            <li>إجراء جلسات فردية وجماعية لعملاء من خلفيات ثقافية متنوعة.</li>
+            <li>تصميم برامج علاجية مستندة إلى فهم الجسم والعاطفة والوعي الذاتي.</li>
+          </ul>
+
+          <h4>الشهادات</h4>
+          <ul>
+            <li>شهادة مدرب محترف (ICF) — مستوى معتمد</li>
+            <li>دورة متقدمة في السايكوسوماتيك والعلاج الجسدي-العاطفي</li>
+            <li>شهادة في التنويم الإيحائي العلاجي</li>
+          </ul>
+
+          <h4>الرؤية والرسالة</h4>
+          <p><strong>الرؤية:</strong> عالم يتمكن فيه الأفراد من التواصل بعمق مع أجسادهم وعواطفهم ليعيشوا حياة متوازنة ومفعمة بالمعنى.</p>
+          <p><strong>الرسالة:</strong> تمكين الأشخاص من تحرير العوائق الداخلية وفك نماذج القلق والتكرار من خلال أساليب علاجية شاملة وآمنة، لتوليد نتائج مستدامة وتحويل شخصي حقيقي.</p>
+        </div>
+
+        <div class="about-photo">
+          <img src="sara-photo.svg" alt="سارة الناصر" loading="lazy">
+        </div>
+      </div>
     </section>
 
+    <!-- rest of the site sections (services, testimonials, faq, contact) remain -->
     <section id="services" class="container services section-box">
       <h3>الخدمات</h3>
       <div class="cards">
