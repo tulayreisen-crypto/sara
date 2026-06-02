@@ -9,6 +9,8 @@
   const bookingsDiv = document.getElementById('bookings');
   const servicesList = document.getElementById('servicesList');
   const addService = document.getElementById('addService');
+  const articlesList = document.getElementById('articlesList');
+  const addArticleBtn = document.getElementById('addArticle');
 
   const PASSWORD = '1234';
 
@@ -25,6 +27,7 @@
     waInput.value = settings.whatsapp || '';
     renderBookings();
     renderServices();
+    renderArticles();
   }
 
   saveBtn.addEventListener('click', ()=>{
@@ -68,6 +71,52 @@
     list.push({title,desc,price});
     localStorage.setItem('sara_services', JSON.stringify(list));
     renderServices();
+  });
+
+  // Articles management
+  function renderArticles(){
+    const list = window._sara_blog.getArticles();
+    if(!list.length){articlesList.innerHTML='<p>لا توجد مقالات</p>';return}
+    const rows = list.slice().reverse().map(a=>{
+      return `<div style="padding:10px;background:#fff;margin-bottom:8px;border-radius:8px"><strong>${a.title}</strong> <div class="small">${a.categories? a.categories.join(', ') : ''} • ${a.date? new Date(a.date).toLocaleDateString():''}</div><div style="margin-top:8px"><button data-id="${a.id}" class="edit">تعديل</button> <button data-id="${a.id}" class="del-article">حذف</button> <button data-id="${a.id}" class="toggle-feature">${a.featured? 'إزالة من المميزة' : 'تمييز'}</button></div></div>`
+    }).join('');
+    articlesList.innerHTML = rows;
+    // wire actions
+    document.querySelectorAll('.del-article').forEach(btn=>btn.addEventListener('click', function(){
+      const id = this.getAttribute('data-id');
+      if(!confirm('هل تريد حذف هذا المقال؟')) return;
+      window._sara_blog.deleteArticle(id);
+      renderArticles();
+    }));
+    document.querySelectorAll('.edit').forEach(btn=>btn.addEventListener('click', function(){
+      const id = this.getAttribute('data-id');
+      const a = window._sara_blog.getArticles().find(x=>String(x.id)===String(id));
+      if(!a) return; 
+      const title = prompt('عنوان المقال', a.title); if(title===null) return;
+      const excerpt = prompt('مقتطف العرض', a.excerpt||'')||'';
+      const categories = prompt('الفئات (مفصولة بفاصلة)', (a.categories||[]).join(','))||'';
+      const tags = prompt('الوسوم (مفصولة بفاصلة)', (a.tags||[]).join(','))||'';
+      const content = prompt('المحتوى (HTML مبسط)', a.content||'')||'';
+      a.title = title; a.excerpt = excerpt; a.categories = categories.split(',').map(s=>s.trim()).filter(Boolean); a.tags = tags.split(',').map(s=>s.trim()).filter(Boolean); a.content = content; 
+      window._sara_blog.updateArticle(a);
+      renderArticles();
+    }));
+    document.querySelectorAll('.toggle-feature').forEach(btn=>btn.addEventListener('click', function(){
+      const id = this.getAttribute('data-id');
+      const a = window._sara_blog.getArticles().find(x=>String(x.id)===String(id));
+      if(!a) return; a.featured = !a.featured; window._sara_blog.updateArticle(a); renderArticles();
+    }));
+  }
+
+  addArticleBtn.addEventListener('click', ()=>{
+    const title = prompt('عنوان المقال'); if(!title) return;
+    const excerpt = prompt('مقتطف العرض')||'';
+    const categories = (prompt('الفئات (مفصولة بفاصلة)')||'').split(',').map(s=>s.trim()).filter(Boolean);
+    const tags = (prompt('الوسوم (مفصولة بفاصلة)')||'').split(',').map(s=>s.trim()).filter(Boolean);
+    const content = prompt('المحتوى (HTML مبسط)')||'';
+    const article = {title, excerpt, categories, tags, content, featured:false};
+    window._sara_blog.addArticle(article);
+    renderArticles();
   });
 
 })();

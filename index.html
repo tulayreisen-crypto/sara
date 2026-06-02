@@ -16,6 +16,7 @@
         <a href="booking.html">احجز جلستك</a>
         <a href="#contact">تواصل</a>
         <a href="joke.html">مزحة عشوائية</a>
+        <a href="blog.html">مقالات</a>
       </nav>
     </div>
   </header>
@@ -36,6 +37,14 @@
             <a class="btn secondary" href="https://wa.me/0000000000" target="_blank">تواصل عبر واتساب</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Featured articles section -->
+    <section id="featured" class="container section-box">
+      <h3>مقالات مميزة</h3>
+      <div id="featuredList" class="cards">
+        <!-- Filled dynamically by blog-script.js -->
       </div>
     </section>
 
@@ -71,28 +80,33 @@
       </div>
     </section>
 
-    <!-- rest of the site sections (services, testimonials, faq, contact) remain -->
+    <!-- Services section expanded -->
     <section id="services" class="container services section-box">
       <h3>الخدمات</h3>
       <div class="cards">
         <div class="card">
           <h4>الكوتشنج</h4>
-          <p>جلسات فردية لاكتشاف الذات وتحقيق الأهداف.</p>
+          <p>جلسات فردية لاكتشاف الذات، تحقيق الأهداف، بناء الثقة بالنفس وتطوير الحياة الشخصية.</p>
           <div class="price">جلسة 60 دقيقة</div>
         </div>
         <div class="card">
           <h4>السايكوسوماتيك</h4>
-          <p>فهم العلاقة بين العقل والجسد وتحرير المشاعر.</p>
+          <p>فهم العلاقة بين العقل والجسد، وتحرير المشاعر والضغوط المخزنة داخل الجسم.</p>
           <div class="price">جلسة 90 دقيقة</div>
         </div>
         <div class="card">
           <h4>التنويم الإيحائي</h4>
-          <p>الوصول إلى العقل الباطن وإعادة برمجة المعتقدات.</p>
+          <p>الوصول إلى العقل الباطن وإعادة برمجة المعتقدات المقيدة وتحرير المخاوف.</p>
           <div class="price">جلسة 90 دقيقة</div>
         </div>
         <div class="card">
-          <h4>الاستشارات الأسرية والزوجية</h4>
-          <p>تحسين التواصل ودعم العلاقات الأسرية.</p>
+          <h4>الاستشارات الأسرية</h4>
+          <p>تحسين التواصل، حل النزاعات، دعم العلاقات الأسرية والزوجية.</p>
+          <div class="price">استشارة</div>
+        </div>
+        <div class="card">
+          <h4>الاستشارات الزوجية</h4>
+          <p>دعم الأزواج في تحسين التواصل وإعادة بناء الثقة والحميمية.</p>
           <div class="price">استشارة</div>
         </div>
       </div>
@@ -133,5 +147,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="blog-script.js"></script>
 </body>
 </html>

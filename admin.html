@@ -11,6 +11,7 @@
     .book-list {margin-top:16px}
     table{width:100%;border-collapse:collapse}
     th,td{border:1px solid #eee;padding:8px;text-align:right}
+    .small{font-size:13px;color:var(--muted)}
   </style>
 </head>
 <body>
@@ -42,9 +43,18 @@
         <button id="addService" class="btn">إضافة خدمة</button>
       </section>
 
+      <section>
+        <h4>المقالات</h4>
+        <div id="articlesList"></div>
+        <div style="margin-top:8px">
+          <button id="addArticle" class="btn">إضافة مقال جديد</button>
+        </div>
+      </section>
+
       <button id="logout" class="btn">خروج</button>
     </div>
   </main>
   <script src="admin-script.js"></script>
+  <script src="blog-script.js"></script>
 </body>
 </html>
