@@ -1,109 +1,14 @@
-# سارة النصار - موقع الكوتشنج والعلاج التكاملي
+# Sara Al-Nassar — Website
 
-## نظرة عامة
+This repository contains a simple production-ready static site for Sara Al-Nassar (Arabic RTL). It includes:
 
-موقع احترافي وفاخر للمدربة سارة النصار متخصصة في:
-- 🎯 الكوتشنج
-- 🧠 السايكوسوماتيك
-- 🌙 التنويم الإيحائي
-- 👨‍👩‍👧‍👦 الاستشارات الأسرية والزوجية
+- index.html (homepage)
+- booking.html (booking form)
+- admin.html (basic admin panel using localStorage, default password 1234)
 
-## المميزات
+How to publish on GitHub Pages:
+1. Go to repository settings -> Pages
+2. Select branch: `main` and folder: `/ (root)`
+3. Save; the site will be available at `https://<username>.github.io/sara/` within a few minutes.
 
-### الموقع العام
-- ✅ قسم البطل (Hero) مع صورة وعنوان جذاب
-- ✅ صفحة "عني" مع سيرة ذاتية احترافية
-- ✅ أقسام الخدمات الأربع
-- ✅ قائمة الأسعار
-- ✅ آراء العملاء
-- ✅ الأسئلة الشائعة (FAQ)
-- ✅ أزرار التواصل (WhatsApp, Instagram, TikTok, YouTube)
-- ✅ نموذج التواصل
-
-### نظام الحجز
-- ✅ نموذج حجز متكامل
-- ✅ جمع معلومات العميل
-- ✅ اختيار نوع الخدمة
-- ✅ اختيار التاريخ والوقت
-- ✅ حفظ البيانات محليًا
-- ✅ رسالة تأكيد النجاح
-
-### لوحة التحكم
-**تسجيل الدخول:**
-- اسم المستخدم: إداري
-- كلمة المرور: sara2024
-
-**المميزات:**
-- 📊 لوحة معلومات مع الإحصائيات
-- 📅 إدارة الحجوزات
-- ⭐ إدارة آراء العملاء
-- ⚙️ الإعدادات والروابط الاجتماعية
-
-## الملفات
-
-```
-├── index.html           # الصفحة الرئيسية
-├── styles.css          # الأنماط الرئيسية
-├── script.js           # سكريبت الموقع
-├── booking.html        # صفحة الحجز
-├── booking-styles.css  # أنماط الحجز
-├── booking-script.js   # سكريبت الحجز
-├── admin.html          # لوحة التحكم
-├── admin-styles.css    # أنماط لوحة التحكم
-├── admin-script.js     # سكريبت لوحة التحكم
-└── README.md           # هذا الملف
-```
-
-## التصميم
-
-### الألوان
-- اللون الأساسي: #8b4953 (بني غامق)
-- اللون الثانوي: #c4a796 (وردي بني)
-- لون التأكيد: #d4af7a (ذهبي فاتح)
-- الخلفية: #f5f1ed (كريمي)
-
-### الخصائص
-- تخطيط RTL (اليمين لليسار) للعربية
-- تصميم متجاوب (Responsive)
-- رسوم توضيحية SVG للصور
-- حفظ البيانات في LocalStorage
-
-## التثبيت والاستخدام
-
-1. انسخ جميع الملفات إلى مجلد
-2. افتح `index.html` في المتصفح
-3. للوصول إلى لوحة التحكم، اذهب إلى `admin.html`
-
-## تخزين البيانات
-
-جميع البيانات يتم حفظها في `localStorage` المتصفح:
-- `bookings` - الحجوزات
-- `testimonials` - آراء العملاء
-- `adminSettings` - إعدادات الموقع
-
-## تخصيص الموقع
-
-### تغيير رقم الواتساب
-عدّل في `index.html`:
-```html
-<a href="https://wa.me/966544123456" ...>
-```
-
-### تغيير روابط وسائل التواصل
-عدّل الروابط في قسم الاتصال بـ `index.html`
-
-### تغيير كلمة مرور لوحة التحكم
-عدّل في `admin-script.js`:
-```javascript
-if (password === 'sara2024') {
-```
-
-## الدعم والتطوير
-
-للمزيد من المعلومات أو التعديلات، يرجى التواصل.
-
----
-
-**النسخة:** 1.0  
-**تاريخ الإنشاء:** 2024  
-**اللغة:** العربية (RTL)
+If you want, I can push further changes or help enable Pages.
