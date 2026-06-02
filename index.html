@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara Coach 777 - Professional Coaching</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Sara Coach 777</div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><button id="langToggle" class="lang-toggle">العربية</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Welcome to Sara Coach 777</h1>
+                <p>Transform Your Life Through Professional Coaching</p>
+                <button class="cta-btn" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">Book Your Session</button>
+            </div>
+            <div class="hero-image">
+                <img src="sara-coach.jpg" alt="Sara Coach 777" id="heroImage">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p id="aboutText">I am a certified professional coach with 10+ years of experience helping individuals achieve their personal and professional goals. My approach combines evidence-based coaching techniques with a deep understanding of human psychology.</p>
+                    <p id="aboutText2">I specialize in life coaching, career development, and personal transformation. My mission is to empower you to unlock your full potential and create meaningful change in your life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Coaching Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-target"></i>
+                    <h3 id="service1Title">Life Coaching</h3>
+                    <p id="service1Desc">Achieve your life goals and create lasting positive change</p>
+                    <span class="price">$80/hour</span>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3 id="service2Title">Career Coaching</h3>
+                    <p id="service2Desc">Advance your career and find professional fulfillment</p>
+                    <span class="price">$90/hour</span>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-heart"></i>
+                    <h3 id="service3Title">Personal Development</h3>
+                    <p id="service3Desc">Build confidence and develop your personal potential</p>
+                    <span class="price">$85/hour</span>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-users"></i>
+                    <h3 id="service4Title">Group Workshops</h3>
+                    <p id="service4Desc">Interactive sessions for teams and organizations</p>
+                    <span class="price">Contact for pricing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <h2 id="bookingTitle">Book Your Session</h2>
+            <div class="booking-content">
+                <div class="calendar-placeholder">
+                    <iframe src="https://calendly.com/your-calendly-link/30min" width="100%" height="600" frameborder="0"></iframe>
+                </div>
+                <div class="booking-info">
+                    <h3 id="sessionInfo">Session Information</h3>
+                    <ul>
+                        <li id="info1">✓ 30-minute discovery session</li>
+                        <li id="info2">✓ Flexible scheduling</li>
+                        <li id="info3">✓ Online or in-person options</li>
+                        <li id="info4">✓ Money-back guarantee</li>
+                    </ul>
+                    <button class="whatsapp-btn" onclick="openWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social-links">
+        <div class="container">
+            <h2 id="followTitle">Follow Me</h2>
+            <div class="social-icons">
+                <a href="https://www.youtube.com" target="_blank" title="YouTube" class="social-icon youtube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" title="Instagram" class="social-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com" target="_blank" title="TikTok" class="social-icon tiktok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sara Coach 777. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Admin Panel Button -->
+    <button class="admin-btn" id="adminBtn" onclick="openAdminPanel()">Admin</button>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAdminPanel()">&times;</span>
+            <h2>Admin Panel</h2>
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="switchTab('content')">Edit Content</button>
+                <button class="tab-btn" onclick="switchTab('services')">Edit Services</button>
+                <button class="tab-btn" onclick="switchTab('social')">Social Links</button>
+            </div>
+            
+            <div id="content" class="tab-content active">
+                <h3>Edit Main Content</h3>
+                <label>About Text:</label>
+                <textarea id="aboutInput" rows="4"></textarea>
+                <label>Hero Title:</label>
+                <input type="text" id="heroTitleInput">
+                <label>Hero Subtitle:</label>
+                <input type="text" id="heroSubtitleInput">
+                <button class="save-btn" onclick="saveContent()">Save Changes</button>
+            </div>
+
+            <div id="services" class="tab-content">
+                <h3>Edit Services</h3>
+                <div class="service-edit">
+                    <label>Service 1 Title:</label>
+                    <input type="text" id="service1Input">
+                    <label>Service 2 Title:</label>
+                    <input type="text" id="service2Input">
+                    <label>Service 3 Title:</label>
+                    <input type="text" id="service3Input">
+                    <label>Service 4 Title:</label>
+                    <input type="text" id="service4Input">
+                    <button class="save-btn" onclick="saveServices()">Save Services</button>
+                </div>
+            </div>
+
+            <div id="social" class="tab-content">
+                <h3>Update Social Links</h3>
+                <label>YouTube URL:</label>
+                <input type="text" id="youtubeInput" placeholder="https://youtube.com/...">
+                <label>Instagram URL:</label>
+                <input type="text" id="instagramInput" placeholder="https://instagram.com/...">
+                <label>TikTok URL:</label>
+                <input type="text" id="tiktokInput" placeholder="https://tiktok.com/...">
+                <label>WhatsApp Number (with country code):</label>
+                <input type="text" id="whatsappInput" placeholder="+1234567890">
+                <button class="save-btn" onclick="saveSocial()">Save Links</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
