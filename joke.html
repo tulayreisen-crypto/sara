@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>مزحة عشوائية — Sara Al-Nassar</title>
+  <link rel="stylesheet" href="joke-style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="section-box" style="text-align:center">
+      <h2>مزحة عشوائية</h2>
+      <p>اضغط الزر للحصول على مزحة جديدة من الإنترنت — مناسب للعرض مع الأصدقاء!</p>
+
+      <div id="joke" class="joke-box">جارٍ التحميل...</div>
+
+      <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button id="newJoke" class="btn primary">احصل على مزحة جديدة</button>
+        <button id="copyJoke" class="btn secondary">نسخ المزحة</button>
+        <a id="shareWhats" class="btn whatsapp" href="#" target="_blank">مشاركة عبر واتساب</a>
+      </div>
+
+      <p style="margin-top:12px;color:var(--muted);font-size:14px">المصدر: JokeAPI (v2) — يتم فلترة المحتوى الحساس</p>
+    </section>
+  </main>
+
+  <script src="joke-script.js"></script>
+</body>
+</html>
