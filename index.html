@@ -14,6 +14,7 @@
         <a href="#about">من أنا</a>
         <a href="#services">الخدمات</a>
         <a href="booking.html">احجز جلستك</a>
+        <a href="gallery.html">معرض الصور</a>
         <a href="#contact">تواصل</a>
         <a href="joke.html">مزحة عشوائية</a>
         <a href="blog.html">مقالات</a>
@@ -43,8 +44,15 @@
     <!-- Featured articles section -->
     <section id="featured" class="container section-box">
       <h3>مقالات مميزة</h3>
-      <div id="featuredList" class="cards">
-        <!-- Filled dynamically by blog-script.js -->
+      <div id="featuredList" class="cards"></div>
+    </section>
+
+    <!-- Success stories / Projects -->
+    <section id="success-stories" class="container section-box">
+      <h3>قصص النجاح والمشاريع</h3>
+      <p class="lead">قصص قبل وبعد، إنجازات العملاء ومشاريع التنمية الشخصية المميزة.</p>
+      <div id="successList" class="cards">
+        <!-- Filled dynamically from gallery / stories in admin -->
       </div>
     </section>
 
@@ -112,12 +120,13 @@
       </div>
     </section>
 
-    <section class="container testimonials section-box">
-      <h3>آراء العملاء</h3>
-      <div class="test-list">
-        <blockquote>"تجربة تحولت حياتي" — ع.م</blockquote>
-        <blockquote>"مهنية وفعالة جدًا" — س.أ</blockquote>
+    <!-- Testimonials slider -->
+    <section id="testimonials" class="container section-box">
+      <h3>توصيات العملاء</h3>
+      <div id="testimonialSlider" class="testimonial-slider">
+        <!-- slides injected by admin-script.js -->
       </div>
+      <div style="text-align:center;margin-top:12px"><button id="prevTest" class="btn secondary">السابق</button> <button id="nextTest" class="btn primary">التالي</button></div>
     </section>
 
     <section class="container faq section-box">
@@ -130,6 +139,17 @@
         <summary>هل التنويم الإيحائي آمن؟</summary>
         <p>نعم عند ممارسته من قبل مختص معتمد، ويستخدم لأهداف علاجية محددة.</p>
       </details>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="container section-box">
+      <h3>اشترك في النشرة البريدية</h3>
+      <p class="lead">انضم لقاعدة المشتركين لتصلك المقالات، الأخبار، والعروض.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input id="newsletterEmail" placeholder="بريدك الإلكتروني" style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee">
+        <button id="subscribeBtn" class="btn primary">اشترك</button>
+      </div>
+      <div id="newsletterMsg" style="margin-top:12px;color:var(--muted)"></div>
     </section>
 
     <section id="contact" class="container contact section-box">
@@ -148,5 +168,44 @@
 
   <script src="script.js"></script>
   <script src="blog-script.js"></script>
+  <script src="gallery-script.js"></script>
+  <script>
+    // Newsletter handlers
+    document.getElementById('subscribeBtn').addEventListener('click', function(){
+      const email = document.getElementById('newsletterEmail').value.trim();
+      const msg = document.getElementById('newsletterMsg');
+      if(!email || !email.includes('@')){ msg.textContent = 'رجاءً أدخل بريدًا إلكترونيًا صحيحًا.'; return; }
+      const list = JSON.parse(localStorage.getItem('sara_subscribers')||'[]');
+      if(list.includes(email)){ msg.textContent = 'هذا البريد مسجل مسبقًا.'; return; }
+      list.push(email); localStorage.setItem('sara_subscribers', JSON.stringify(list));
+      msg.textContent = 'شكرًا لاشتراكك!'; document.getElementById('newsletterEmail').value='';
+      // Optionally, integrate with an email provider via backend later
+    });
+
+    // Testimonials slider basic controls
+    (function(){
+      const slides = document.getElementById('testimonialSlider');
+      let idx = 0;
+      function show(i){
+        const items = slides.querySelectorAll('.test-item');
+        if(!items.length) return;
+        items.forEach((el,j)=>el.style.display = (j===i)?'block':'none');
+      }
+      document.getElementById('prevTest').addEventListener('click', ()=>{ idx = Math.max(0, idx-1); show(idx); });
+      document.getElementById('nextTest').addEventListener('click', ()=>{ const items = document.getElementById('testimonialSlider').querySelectorAll('.test-item'); idx = (idx+1) % Math.max(1, items.length); show(idx); });
+      // initial render: will be filled by admin-script.renderTestimonials
+      setTimeout(()=>{ show(0); },400);
+    })();
+
+    // Success stories rendering uses gallery images tagged as 'before-after' in admin
+    function renderSuccess(){
+      const out = document.getElementById('successList');
+      const images = JSON.parse(localStorage.getItem('sara_images')||'[]');
+      const stories = images.filter(i=>i.tags && i.tags.includes('before-after'));
+      if(!stories.length){ out.innerHTML = '<p>لم تُضف قصص نجاح بعد. يمكنك إضافتها من لوحة التحكم.</p>'; return }
+      out.innerHTML = stories.map(s=>`<div class="card"><img src="${s.data}" alt="${s.title}" style="width:100%;border-radius:8px"><div style="margin-top:8px"><strong>${s.title||''}</strong><p style="color:var(--muted)">${s.caption||''}</p></div></div>`).join('');
+    }
+    renderSuccess();
+  </script>
 </body>
 </html>

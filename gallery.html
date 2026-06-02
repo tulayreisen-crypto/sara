@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>معرض الصور — سارة الناصر</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .gallery-card{border-radius:10px;overflow:hidden}
+    .gallery-card img{width:100%;height:160px;object-fit:cover;display:block}
+    /* lightbox */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:120;display:none}
+    .lb img{max-width:90%;max-height:90%;border-radius:10px}
+    .lb .close{position:absolute;top:18px;left:18px;background:#fff;padding:8px;border-radius:8px}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <h1 class="brand">سارة الناصر</h1>
+      <nav>
+        <a href="index.html">الصفحة الرئيسية</a>
+        <a href="admin.html">لوحة التحكم</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section-box">
+      <h2>معرض الصور</h2>
+      <p class="lead">مجموعة من صور قصص النجاح، قبل وبعد، ولقطات من المشاريع.</p>
+      <div id="gallery" class="gallery-grid"></div>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lb"><button class="close" onclick="document.getElementById('lightbox').style.display='none'">إغلاق</button><img id="lbimg" src=""></div>
+
+  <script src="gallery-script.js"></script>
+</body>
+</html>
